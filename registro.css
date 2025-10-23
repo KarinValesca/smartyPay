@@ -1,0 +1,473 @@
+/* ========================================
+   ESTILOS PANTALLA REGISTRO - SmartyPay PCF1
+   Archivo: registro.css
+   ======================================== */
+
+/* Contenedor principal de registro */
+.registro-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, #00897B 0%, #26A69A 100%);
+    position: relative;
+}
+
+/* Patrón de fondo decorativo */
+.registro-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.05) 35px, rgba(255,255,255,.05) 70px);
+    pointer-events: none;
+}
+
+/* Tarjeta de registro */
+.registro-card {
+    background-color: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: var(--spacing-xxl);
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    animation: slideUp 0.5s ease-out;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll personalizado para la tarjeta */
+.registro-card::-webkit-scrollbar {
+    width: 8px;
+}
+
+.registro-card::-webkit-scrollbar-track {
+    background: var(--color-gray-100);
+    border-radius: 4px;
+}
+
+.registro-card::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 4px;
+}
+
+.registro-card::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-dark);
+}
+
+/* Header del registro */
+.registro-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.logo-icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.logo-title {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin: 0;
+    font-weight: var(--font-weight-bold);
+}
+
+.registro-title {
+    font-size: 1.75rem;
+    color: var(--color-gray-900);
+    margin-bottom: var(--spacing-sm);
+}
+
+.registro-subtitle {
+    color: var(--color-gray-600);
+    font-size: var(--font-size-base);
+    margin: 0;
+}
+
+/* Contenedor de alertas */
+.alert-container {
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Formulario de registro */
+.registro-form {
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Secciones del formulario */
+.form-section {
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-gray-200);
+}
+
+.form-section:last-of-type {
+    border-bottom: none;
+}
+
+.form-section-title {
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-lg);
+    font-weight: var(--font-weight-bold);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.form-section-title::before {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 20px;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+}
+
+/* Wrapper para input de contraseña con botón */
+.password-input-wrapper {
+    position: relative;
+}
+
+.password-input-wrapper .form-input {
+    padding-right: 48px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-gray-500);
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color var(--transition-fast);
+}
+
+.password-toggle:hover {
+    color: var(--color-primary);
+}
+
+.password-toggle:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: var(--border-radius-sm);
+}
+
+.eye-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Texto de ayuda en inputs */
+.input-help-text {
+    display: block;
+    font-size: var(--font-size-small);
+    color: var(--color-gray-600);
+    margin-top: var(--spacing-xs);
+}
+
+/* Indicador de fortaleza de contraseña */
+.password-strength-container {
+    margin-top: var(--spacing-md);
+}
+
+.password-strength-label {
+    font-size: var(--font-size-small);
+    color: var(--color-gray-700);
+    margin-bottom: var(--spacing-xs);
+    font-weight: var(--font-weight-medium);
+}
+
+.password-strength-bar {
+    height: 8px;
+    background-color: var(--color-gray-200);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: var(--spacing-xs);
+}
+
+.password-strength-fill {
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s ease, background-color 0.3s ease;
+    border-radius: 4px;
+}
+
+.password-strength-fill.weak {
+    width: 33%;
+    background-color: var(--color-error);
+}
+
+.password-strength-fill.medium {
+    width: 66%;
+    background-color: var(--color-warning);
+}
+
+.password-strength-fill.strong {
+    width: 100%;
+    background-color: var(--color-success);
+}
+
+.password-strength-text {
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-medium);
+}
+
+.password-strength-text.weak {
+    color: var(--color-error);
+}
+
+.password-strength-text.medium {
+    color: var(--color-warning);
+}
+
+.password-strength-text.strong {
+    color: var(--color-success);
+}
+
+/* Contenedor de checkbox personalizado */
+.checkbox-container {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    position: relative;
+    padding-left: 32px;
+    user-select: none;
+}
+
+.checkbox-container input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkbox-checkmark {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 20px;
+    width: 20px;
+    background-color: var(--color-white);
+    border: 2px solid var(--color-gray-300);
+    border-radius: var(--border-radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.checkbox-container:hover .checkbox-checkmark {
+    border-color: var(--color-primary);
+}
+
+.checkbox-container input:checked ~ .checkbox-checkmark {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.checkbox-checkmark::after {
+    content: '';
+    position: absolute;
+    display: none;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--color-white);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-container input:checked ~ .checkbox-checkmark::after {
+    display: block;
+}
+
+.checkbox-container input:focus ~ .checkbox-checkmark {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.checkbox-label {
+    color: var(--color-gray-700);
+    font-size: var(--font-size-small);
+    line-height: 1.5;
+}
+
+.link-inline {
+    color: var(--color-primary);
+    text-decoration: underline;
+    font-weight: var(--font-weight-medium);
+}
+
+.link-inline:hover {
+    color: var(--color-primary-dark);
+}
+
+/* Botones de acción */
+.form-actions {
+    margin-top: var(--spacing-xl);
+}
+
+.registro-form .btn-large {
+    margin-bottom: var(--spacing-lg);
+    font-weight: var(--font-weight-bold);
+}
+
+/* Enlaces del formulario */
+.registro-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.link-text {
+    color: var(--color-gray-600);
+    font-size: var(--font-size-small);
+}
+
+.link-primary {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-small);
+}
+
+.link-primary:hover {
+    color: var(--color-primary-dark);
+}
+
+/* Footer del registro */
+.registro-footer {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--color-gray-200);
+}
+
+.footer-text {
+    font-size: var(--font-size-small);
+    color: var(--color-gray-600);
+    margin: var(--spacing-xs) 0;
+}
+
+/* Estados del formulario */
+.registro-form .form-input:focus,
+.registro-form .form-select:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 137, 123, 0.15);
+}
+
+/* Loading state para el botón */
+.btn-loading {
+    position: relative;
+    color: transparent;
+    pointer-events: none;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+    border: 2px solid var(--color-white);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .registro-container {
+        padding: var(--spacing-md);
+    }
+
+    .registro-card {
+        padding: var(--spacing-lg);
+        max-height: 95vh;
+    }
+
+    .logo-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .logo-title {
+        font-size: 1.5rem;
+    }
+
+    .registro-title {
+        font-size: 1.5rem;
+    }
+
+    .form-section-title {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .registro-card {
+        padding: var(--spacing-md);
+    }
+
+    .logo-container {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .registro-links {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .form-section {
+        margin-bottom: var(--spacing-lg);
+        padding-bottom: var(--spacing-md);
+    }
+}
+
+/* Accesibilidad - Mejoras para lectores de pantalla */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
