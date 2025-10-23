@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SmartyPay PCF1 - Dashboard Residente">
+    <meta name="author" content="Karin Valesca Cartes Fuica">
+    <title>Dashboard Residente - SmartyPay PCF1</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="styles-global.css">
+    <link rel="stylesheet" href="dashboard-residente.css">
+</head>
+<body>
+    <!-- Sidebar de navegación -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-container">
+                <img src="./images/logo-smartypay.png" alt="Logo SmartyPay" class="logo-icon" onerror="this.style.display='none';">
+                <h1 class="logo-title">SmartyPay</h1>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-section="inicio">
+                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <span class="nav-text">Inicio</span>
+            </a>
+
+            <a href="#" class="nav-item" data-section="pagos">
+                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                    <line x1="1" y1="10" x2="23" y2="10"></line>
+                </svg>
+                <span class="nav-text">Pagos</span>
+            </a>
+
+            <a href="#" class="nav-item" data-section="estado-cuenta">
+                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <span class="nav-text">Estado de Cuenta</span>
+            </a>
+
+            <a href="#" class="nav-item" data-section="notificaciones">
+                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+                <span class="nav-text">Notificaciones</span>
+                <span class="notification-badge" id="notificationBadge">3</span>
+            </a>
+
+            <a href="#" class="nav-item" data-section="perfil">
+                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span class="nav-text">Mi Perfil</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button class="btn-logout" id="logoutBtn">
+                <svg class="logout-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+                <span>Cerrar Sesión</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-left">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Abrir menú">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+                <h2 class="header-title" id="headerTitle">Inicio</h2>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <span class="user-name" id="userName">Juan Pérez</span>
+                    <span class="user-unit">Unidad 301</span>
+                </div>
+                <div class="user-avatar">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenido de las secciones -->
+        <div class="content-wrapper">
+            <!-- Sección Inicio -->
+            <section class="content-section active" id="section-inicio">
+                <div class="welcome-banner">
+                    <h3 class="welcome-title">Bienvenido, <span id="welcomeName">Juan</span></h3>
+                    <p class="welcome-subtitle">Aquí encontrarás un resumen de tu estado de cuenta</p>
+                </div>
+
+                <!-- Resumen de cuenta -->
+                <div class="dashboard-grid">
+                    <div class="stat-card stat-card-primary">
+                        <div class="stat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <p class="stat-label">Saldo Pendiente</p>
+                            <h4 class="stat-value">$45,000</h4>
+                        </div>
+                    </div>
+
+                    <div class="stat-card stat-card-success">
+                        <div class="stat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <p class="stat-label">Pagos al Día</p>
+                            <h4 class="stat-value">8/10</h4>
+                        </div>
+                    </div>
+
+                    <div class="stat-card stat-card-warning">
+                        <div class="stat-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <p class="stat-label">Próximo Vencimiento</p>
+                            <h4 class="stat-value">5 días</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Últimos pagos -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Últimos Pagos</h3>
+                        <a href="#" class="link-primary" data-action="ver-todos-pagos">Ver todos</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Concepto</th>
+                                        <th>Monto</th>
+                                        <th>Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>15/01/2025</td>
+                                        <td>Gastos Comunes</td>
+                                        <td>$35,000</td>
+                                        <td><span class="badge badge-success">Pagado</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>10/01/2025</td>
+                                        <td>Fondo de Reserva</td>
+                                        <td>$10,000</td>
+                                        <td><span class="badge badge-success">Pagado</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>05/01/2025</td>
+                                        <td>Gastos Comunes</td>
+                                        <td>$35,000</td>
+                                        <td><span class="badge badge-warning">Pendiente</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Pagos -->
+            <section class="content-section" id="section-pagos">
+                <div class="section-header">
+                    <h3 class="section-title">Realizar Pago</h3>
+                    <p class="section-subtitle">Selecciona el método de pago y confirma tu transacción</p>
+                </div>
+
+                <div class="payment-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Detalles del Pago</h4>
+                        </div>
+                        <div class="card-body">
+                            <form id="paymentForm" class="payment-form">
+                                <div class="form-group">
+                                    <label for="paymentType" class="form-label">Tipo de Pago *</label>
+                                    <select id="paymentType" class="form-select" required>
+                                        <option value="">Seleccionar tipo</option>
+                                        <option value="gastos-comunes">Gastos Comunes</option>
+                                        <option value="fondo-reserva">Fondo de Reserva</option>
+                                        <option value="multa">Multa</option>
+                                        <option value="otro">Otro</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="paymentAmount" class="form-label">Monto *</label>
+                                    <div class="input-with-prefix">
+                                        <span class="input-prefix">$</span>
+                                        <input type="number" id="paymentAmount" class="form-input" placeholder="0" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="paymentMethod" class="form-label">Método de Pago *</label>
+                                    <select id="paymentMethod" class="form-select" required>
+                                        <option value="">Seleccionar método</option>
+                                        <option value="transferencia">Transferencia Bancaria</option>
+                                        <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+                                        <option value="webpay">WebPay</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="paymentNote" class="form-label">Nota (Opcional)</label>
+                                    <textarea id="paymentNote" class="form-textarea" rows="3" placeholder="Agregar nota o comentario"></textarea>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-block btn-large">
+                                    Procesar Pago
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Resumen</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="summary-list">
+                                <div class="summary-item">
+                                    <span class="summary-label">Unidad:</span>
+                                    <span class="summary-value">301</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">Saldo Actual:</span>
+                                    <span class="summary-value summary-amount">$45,000</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">Monto a Pagar:</span>
+                                    <span class="summary-value summary-amount" id="summaryAmount">$0</span>
+                                </div>
+                                <div class="summary-divider"></div>
+                                <div class="summary-item summary-total">
+                                    <span class="summary-label">Nuevo Saldo:</span>
+                                    <span class="summary-value" id="newBalance">$45,000</span>
+                                </div>
+                            </div>
+
+                            <div class="alert alert-info mt-lg">
+                                <p><strong>Importante:</strong></p>
+                                <ul>
+                                    <li>Recibirás un comprobante por email</li>
+                                    <li>El pago se reflejará en 24-48 horas</li>
+                                    <li>Guarda tu número de transacción</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Estado de Cuenta -->
+            <section class="content-section" id="section-estado-cuenta">
+                <div class="section-header">
+                    <h3 class="section-title">Estado de Cuenta</h3>
+                    <div class="section-actions">
+                        <button class="btn btn-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px; margin-right: 8px;">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Descargar PDF
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="account-summary">
+                            <div class="account-info-grid">
+                                <div class="account-info-item">
+                                    <p class="account-info-label">Unidad</p>
+                                    <p class="account-info-value">301</p>
+                                </div>
+                                <div class="account-info-item">
+                                    <p class="account-info-label">Propietario</p>
+                                    <p class="account-info-value">Juan Pérez</p>
+                                </div>
+                                <div class="account-info-item">
+                                    <p class="account-info-label">Teléfono</p>
+                                    <p class="account-info-value">+56 9 1234 5678</p>
+                                </div>
+                                <div class="account-info-item">
+                                    <p class="account-info-label">Email</p>
+                                    <p class="account-info-value">juan.perez@email.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Historial de Transacciones</h4>
+                        <div class="filter-group">
+                            <select class="form-select" style="width: auto;">
+                                <option>Últimos 3 meses</option>
+                                <option>Últimos 6 meses</option>
+                                <option>Último año</option>
+                                <option>Todo</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Descripción</th>
+                                        <th>Cargo</th>
+                                        <th>Abono</th>
+                                        <th>Saldo</th>
+                                        <th>Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>15/01/2025</td>
+                                        <td>Pago Gastos Comunes</td>
+                                        <td>-</td>
+                                        <td class="text-success">$35,000</td>
+                                        <td>$45,000</td>
+                                        <td><span class="badge badge-success">Confirmado</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>10/01/2025</td>
+                                        <td>Pago Fondo Reserva</td>
+                                        <td>-</td>
+                                        <td class="text-success">$10,000</td>
+                                        <td>$80,000</td>
+                                        <td><span class="badge badge-success">Confirmado</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>05/01/2025</td>
+                                        <td>Gastos Comunes Enero</td>
+                                        <td class="text-error">$35,000</td>
+                                        <td>-</td>
+                                        <td>$90,000</td>
+                                        <td><span class="badge badge-warning">Pendiente</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>01/01/2025</td>
+                                        <td>Fondo de Reserva</td>
+                                        <td class="text-error">$10,000</td>
+                                        <td>-</td>
+                                        <td>$55,000</td>
+                                        <td><span class="badge badge-warning">Pendiente</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Notificaciones -->
+            <section class="content-section" id="section-notificaciones">
+                <div class="section-header">
+                    <h3 class="section-title">Notificaciones</h3>
+                    <button class="btn btn-secondary btn-sm">Marcar todas como leídas</button>
+                </div>
+
+                <div class="notifications-list">
+                    <div class="notification-item unread">
+                        <div class="notification-icon notification-icon-info">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="16" x2="12" y2="12"></line>
+                                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                            </svg>
+                        </div>
+                        <div class="notification-content">
+                            <h4 class="notification-title">Recordatorio de Pago</h4>
+                            <p class="notification-text">Tienes un pago pendiente de $35,000 que vence en 5 días.</p>
+                            <span class="notification-time">Hace 2 horas</span>
+                        </div>
+                    </div>
+
+                    <div class="notification-item unread">
+                        <div class="notification-icon notification-icon-success">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                        <div class="notification-content">
+                            <h4 class="notification-title">Pago Confirmado</h4>
+                            <p class="notification-text">Tu pago de $10,000 ha sido confirmado exitosamente.</p>
+                            <span class="notification-time">Hace 1 día</span>
+                        </div>
+                    </div>
+
+                    <div class="notification-item unread">
+                        <div class="notification-icon notification-icon-warning">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                <line x1="12" y1="9" x2="12" y2="13"></line>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                        </div>
+                        <div class="notification-content">
+                            <h4 class="notification-title">Próximo Vencimiento</h4>
+                            <p class="notification-text">Recuerda que el plazo para pagar los gastos comunes vence pronto.</p>
+                            <span class="notification-time">Hace 2 días</span>
+                        </div>
+                    </div>
+
+                    <div class="notification-item">
+                        <div class="notification-icon notification-icon-info">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="16" x2="12" y2="12"></line>
+                                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                            </svg>
+                        </div>
+                        <div class="notification-content">
+                            <h4 class="notification-title">Aviso de la Comunidad</h4>
+                            <p class="notification-text">Se ha programado una reunión de copropietarios para el día 25 de enero.</p>
+                            <span class="notification-time">Hace 3 días</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Perfil -->
+            <section class="content-section" id="section-perfil">
+                <div class="section-header">
+                    <h3 class="section-title">Mi Perfil</h3>
+                </div>
+
+                <div class="profile-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Información Personal</h4>
+                        </div>
+                        <div class="card-body">
+                            <form id="profileForm" class="profile-form">
+                                <div class="form-group">
+                                    <label for="profileName" class="form-label">Nombre Completo</label>
+                                    <input type="text" id="profileName" class="form-input" value="Juan Pérez">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="profileEmail" class="form-label">Email</label>
+                                    <input type="email" id="profileEmail" class="form-input" value="juan.perez@email.com">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="profilePhone" class="form-label">Teléfono</label>
+                                    <input type="tel" id="profilePhone" class="form-input" value="+56 9 1234 5678">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="profileUnit" class="form-label">Unidad</label>
+                                    <input type="text" id="profileUnit" class="form-input" value="301" disabled>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Actualizar Perfil</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Cambiar Contraseña</h4>
+                        </div>
+                        <div class="card-body">
+                            <form id="passwordForm" class="password-form">
+                                <div class="form-group">
+                                    <label for="currentPassword" class="form-label">Contraseña Actual</label>
+                                    <input type="password" id="currentPassword" class="form-input">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="newPassword" class="form-label">Nueva Contraseña</label>
+                                    <input type="password" id="newPassword" class="form-input">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="confirmNewPassword" class="form-label">Confirmar Nueva Contraseña</label>
+                                    <input type="password" id="confirmNewPassword" class="form-input">
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Cambiar Contraseña</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Script de funcionalidad -->
+    <script src="dashboard-residente.js"></script>
+</body>
+</html>
