@@ -1,0 +1,188 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos del body */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Contenedor principal */
+.contenedor {
+    width: 100%;
+    max-width: 450px;
+}
+
+/* Caja del formulario */
+.caja-formulario {
+    background: white;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Encabezado */
+.encabezado {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.encabezado h1 {
+    color: #667eea;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.encabezado p {
+    color: #666;
+    font-size: 18px;
+}
+
+/* Mensaje informativo */
+.mensaje-info {
+    background: #f0f4ff;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 25px;
+    border-left: 4px solid #667eea;
+}
+
+.mensaje-info p {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Campos del formulario */
+.campo {
+    margin-bottom: 20px;
+}
+
+.campo label {
+    display: block;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.campo input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.campo input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+/* Checkbox */
+.campo-checkbox {
+    margin-bottom: 20px;
+}
+
+.campo-checkbox label {
+    display: flex;
+    align-items: center;
+    color: #555;
+    font-size: 14px;
+}
+
+.campo-checkbox input[type="checkbox"] {
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+}
+
+/* Opciones (recordar y olvidaste contraseña) */
+.opciones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.recordar {
+    display: flex;
+    align-items: center;
+    color: #555;
+}
+
+.recordar input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Enlaces */
+.enlace {
+    color: #667eea;
+    text-decoration: none;
+}
+
+.enlace:hover {
+    text-decoration: underline;
+}
+
+/* Botón principal */
+.boton-principal {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.boton-principal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.boton-principal:active {
+    transform: translateY(0);
+}
+
+/* Pie del formulario */
+.pie {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.pie p {
+    color: #666;
+    font-size: 14px;
+    margin: 8px 0;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .caja-formulario {
+        padding: 25px;
+    }
+
+    .encabezado h1 {
+        font-size: 28px;
+    }
+
+    .opciones {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
