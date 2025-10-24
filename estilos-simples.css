@@ -56,10 +56,25 @@
     margin-bottom: var(--spacing-xl);
 }
 
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.logo-icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
 .encabezado h1 {
     color: var(--color-primary);
     font-size: 2rem;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: 0;
     font-weight: var(--font-weight-bold);
 }
 
@@ -220,6 +235,11 @@
         padding: var(--spacing-lg);
     }
 
+    .logo-icon {
+        width: 50px;
+        height: 50px;
+    }
+
     .encabezado h1 {
         font-size: 1.5rem;
     }
@@ -228,6 +248,11 @@
 @media (max-width: 480px) {
     .caja-formulario {
         padding: var(--spacing-md);
+    }
+
+    .logo-container {
+        flex-direction: column;
+        gap: var(--spacing-sm);
     }
 
     .opciones {
