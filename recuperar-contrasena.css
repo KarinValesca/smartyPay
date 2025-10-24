@@ -3,99 +3,6 @@
    Archivo: recuperar-contrasena.css
    ======================================== */
 
-/* Contenedor principal de recuperación */
-.recuperar-container {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--spacing-lg);
-    background: linear-gradient(135deg, #00897B 0%, #26A69A 100%);
-    position: relative;
-}
-
-/* Patrón de fondo decorativo */
-.recuperar-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image:
-        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.05) 35px, rgba(255,255,255,.05) 70px);
-    pointer-events: none;
-}
-
-/* Tarjeta de recuperación */
-.recuperar-card {
-    background-color: var(--color-white);
-    border-radius: var(--border-radius-lg);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    padding: var(--spacing-xxl);
-    width: 100%;
-    max-width: 450px;
-    position: relative;
-    animation: slideUp 0.5s ease-out;
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Header de recuperación */
-.recuperar-header {
-    text-align: center;
-    margin-bottom: var(--spacing-xl);
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-lg);
-}
-
-.logo-icon {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-}
-
-.logo-title {
-    font-size: 2rem;
-    color: var(--color-primary);
-    margin: 0;
-    font-weight: var(--font-weight-bold);
-}
-
-.recuperar-title {
-    font-size: 1.75rem;
-    color: var(--color-gray-900);
-    margin-bottom: var(--spacing-sm);
-}
-
-.recuperar-subtitle {
-    color: var(--color-gray-600);
-    font-size: var(--font-size-base);
-    margin: 0;
-    line-height: 1.6;
-}
-
-/* Contenedor de alertas */
-.alert-container {
-    margin-bottom: var(--spacing-lg);
-}
-
 /* Formulario de recuperación */
 .recuperar-form {
     margin-bottom: var(--spacing-lg);
@@ -133,90 +40,14 @@
     font-weight: var(--font-weight-bold);
 }
 
-/* Enlaces del formulario */
-.recuperar-links {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--spacing-md);
-    margin-top: var(--spacing-lg);
-    flex-wrap: wrap;
-}
-
-.recuperar-links .separator {
-    color: var(--color-gray-400);
-}
-
-.link-secondary {
-    color: var(--color-gray-600);
-    font-size: var(--font-size-small);
-    transition: color var(--transition-fast);
-}
-
-.link-secondary:hover {
-    color: var(--color-primary);
-}
-
-.link-primary {
-    color: var(--color-primary);
-    font-weight: var(--font-weight-medium);
-    font-size: var(--font-size-small);
-}
-
-.link-primary:hover {
-    color: var(--color-primary-dark);
-}
-
-/* Footer de recuperación */
-.recuperar-footer {
-    text-align: center;
-    margin-top: var(--spacing-xl);
-    padding-top: var(--spacing-lg);
-    border-top: 1px solid var(--color-gray-200);
-}
-
-.footer-text {
-    font-size: var(--font-size-small);
-    color: var(--color-gray-600);
-    margin: var(--spacing-xs) 0;
-}
-
 /* Estados del formulario */
 .recuperar-form .form-input:focus {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 137, 123, 0.15);
 }
 
-/* Loading state para el botón */
-.btn-loading {
-    position: relative;
-    color: transparent;
-    pointer-events: none;
-}
-
-.btn-loading::after {
-    content: '';
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    top: 50%;
-    left: 50%;
-    margin-left: -8px;
-    margin-top: -8px;
-    border: 2px solid var(--color-white);
-    border-top-color: transparent;
-    border-radius: 50%;
-    animation: spin 0.6s linear infinite;
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
 /* Estado de éxito */
-.recuperar-card.success .recuperar-header {
+.auth-card.success .auth-header {
     margin-bottom: var(--spacing-lg);
 }
 
@@ -245,64 +76,10 @@
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-    .recuperar-container {
-        padding: var(--spacing-md);
-    }
-
-    .recuperar-card {
-        padding: var(--spacing-lg);
-    }
-
-    .logo-icon {
-        width: 50px;
-        height: 50px;
-    }
-
-    .logo-title {
-        font-size: 1.5rem;
-    }
-
-    .recuperar-title {
-        font-size: 1.5rem;
-    }
-
-    .recuperar-subtitle {
-        font-size: var(--font-size-small);
-    }
-}
-
 @media (max-width: 480px) {
-    .recuperar-card {
-        padding: var(--spacing-md);
-    }
-
-    .logo-container {
-        flex-direction: column;
-        gap: var(--spacing-sm);
-    }
-
-    .recuperar-links {
-        flex-direction: column;
-        gap: var(--spacing-sm);
-    }
-
-    .recuperar-links .separator {
-        display: none;
-    }
-
     .info-box {
         flex-direction: column;
         align-items: center;
         text-align: center;
-    }
-}
-
-/* Accesibilidad - Mejoras para lectores de pantalla */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
     }
 }
