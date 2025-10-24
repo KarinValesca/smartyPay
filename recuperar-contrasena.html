@@ -18,32 +18,26 @@
             <!-- Header con logo -->
             <div class="recuperar-header">
                 <div class="logo-container">
-                    <img src="./images/logo-smartypay.png" alt="Logo SmartyPay" class="logo-icon" onerror="console.error('No se pudo cargar el logo desde:', this.src); this.style.display='none';">
+                    <img src="./images/logo-smartypay.png" alt="Logo SmartyPay" class="logo-icon">
                     <h1 class="logo-title">SmartyPay</h1>
                 </div>
                 <h2 class="recuperar-title">Recuperar Contraseña</h2>
                 <p class="recuperar-subtitle">Ingresa tu correo electrónico y te enviaremos instrucciones para restablecer tu contraseña</p>
             </div>
 
-            <!-- Alerta de mensajes -->
-            <div id="alertContainer" class="alert-container"></div>
-
             <!-- Formulario de recuperación -->
-            <form id="recuperarForm" class="recuperar-form" novalidate>
+            <form class="recuperar-form">
                 <!-- Campo de email -->
                 <div class="form-group">
                     <label for="email" class="form-label">Correo Electrónico</label>
                     <input
                         type="email"
-                        id="email"
                         name="email"
                         class="form-input"
                         placeholder="ejemplo@correo.com"
                         required
                         autocomplete="email"
-                        aria-describedby="emailError"
                     >
-                    <span id="emailError" class="input-error-message" role="alert"></span>
                 </div>
 
                 <!-- Información adicional -->
@@ -62,7 +56,6 @@
                 <!-- Botón de enviar -->
                 <button
                     type="submit"
-                    id="recuperarButton"
                     class="btn btn-primary btn-block btn-large"
                 >
                     Enviar Instrucciones
@@ -87,8 +80,5 @@
             </div>
         </div>
     </div>
-
-    <!-- Script de validación y lógica -->
-    <script src="recuperar-contrasena.js"></script>
 </body>
 </html>

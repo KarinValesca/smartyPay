@@ -18,68 +18,44 @@
             <!-- Header con logo -->
             <div class="login-header">
                 <div class="logo-container">
-                    <img src="./images/logo-smartypay.png" alt="Logo SmartyPay" class="logo-icon" onerror="console.error('No se pudo cargar el logo desde:', this.src); this.style.display='none';">
-
+                    <img src="./images/logo-smartypay.png" alt="Logo SmartyPay" class="logo-icon">
                     <h1 class="logo-title">SmartyPay</h1>
                 </div>
                 <h2 class="login-title">Bienvenido</h2>
                 <p class="login-subtitle">Ingresa tus credenciales para acceder al sistema</p>
             </div>
 
-            <!-- Alerta de mensajes -->
-            <div id="alertContainer" class="alert-container"></div>
-
             <!-- Formulario de login -->
-            <form id="loginForm" class="login-form" novalidate>
+            <form class="login-form">
                 <!-- Campo de usuario/email -->
                 <div class="form-group">
                     <label for="email" class="form-label">Usuario (Correo Electrónico)</label>
-                    <input 
-                        type="email" 
-                        id="email" 
-                        name="email" 
-                        class="form-input" 
+                    <input
+                        type="email"
+                        name="email"
+                        class="form-input"
                         placeholder="ejemplo@correo.com"
                         required
                         autocomplete="email"
-                        aria-describedby="emailError"
                     >
-                    <span id="emailError" class="input-error-message" role="alert"></span>
                 </div>
 
                 <!-- Campo de contraseña -->
                 <div class="form-group">
                     <label for="password" class="form-label">Contraseña</label>
-                    <div class="password-input-wrapper">
-                        <input 
-                            type="password" 
-                            id="password" 
-                            name="password" 
-                            class="form-input" 
-                            placeholder="Ingresa tu contraseña"
-                            required
-                            autocomplete="current-password"
-                            aria-describedby="passwordError"
-                        >
-                        <button 
-                            type="button" 
-                            id="togglePassword" 
-                            class="password-toggle"
-                            aria-label="Mostrar contraseña"
-                        >
-                            <svg class="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                <circle cx="12" cy="12" r="3"></circle>
-                            </svg>
-                        </button>
-                    </div>
-                    <span id="passwordError" class="input-error-message" role="alert"></span>
+                    <input
+                        type="password"
+                        name="password"
+                        class="form-input"
+                        placeholder="Ingresa tu contraseña"
+                        required
+                        autocomplete="current-password"
+                    >
                 </div>
 
                 <!-- Botón de ingresar -->
-                <button 
-                    type="submit" 
-                    id="loginButton" 
+                <button
+                    type="submit"
                     class="btn btn-primary btn-block btn-large"
                 >
                     Ingresar
@@ -104,8 +80,5 @@
             </div>
         </div>
     </div>
-
-    <!-- Script de validación y lógica -->
-    <script src="login.js"></script>
 </body>
 </html>
